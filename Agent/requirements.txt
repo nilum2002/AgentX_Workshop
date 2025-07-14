@@ -1,0 +1,8 @@
+openai
+langchain
+langchain-core
+langchain-community
+langchain-groq
+nest_asyncio
+llama-index
+llama-index-llms-groq
