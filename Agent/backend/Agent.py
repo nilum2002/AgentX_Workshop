@@ -4,6 +4,9 @@ from langchain.agents import initialize_agent, AgentType
 from langchain_community.chat_models import ChatOpenAI
 from langchain.tools import Tool
 from langchain_groq import ChatGroq
+from fastapi import FastAPI
+app = FastAPI()
+
 
 # the graq api 
 GROQ_API = "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"
