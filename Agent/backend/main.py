@@ -3,7 +3,32 @@ from typing import List
 from fastapi import FastAPI, HTTPException, Request
 from dotenv import load_dotenv
 import Agent as Agent
+import json
+# load the json file 
+with open("r.json", "r") as file:
+    data = json.load(file)
 
 
 
-# print(Agent.agent.run("What is the capital of France?"))
+load_dotenv()
+
+
+app = FastAPI()
+
+@app.get("/ask")
+
+async def ask_agent(request: Request):
+    # data = await request.json()
+    # question = data.get("question")
+    # if not question:
+    #     raise HTTPException(status_code=400, detail="Question is required")
+    try:
+        response = Agent.agent.run(str(data["question"]))
+        print("Agent response:", response)
+        
+        return {"response": response}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    # return {"response": data}
+
+    
