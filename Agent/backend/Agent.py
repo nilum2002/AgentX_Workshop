@@ -38,5 +38,5 @@ agent = initialize_agent(
 
 # smaple feedback 
 customer_feedback = "The app craches every time I try to upload a photo It's really frustrating"
-response = agent.run(f"please comment professionally on this customer feedback: '{customer_feedback}'")
-print(response)
+# response = agent.run(f"please comment professionally on this customer feedback: '{customer_feedback}'")
+# print(response)
