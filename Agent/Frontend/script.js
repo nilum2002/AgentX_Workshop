@@ -18,10 +18,15 @@ async function SendData(question) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ question: question })
     })
-    const data = await response.json();
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }else{
+        const data = await response.json();
     
-    console.log(data);
-}
+        console.log(data);
+    }
+    }
+    
 
 SearchButton.addEventListener('click', async () => {
    const input = await getInput(inputField);
