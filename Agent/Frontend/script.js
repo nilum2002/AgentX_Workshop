@@ -3,6 +3,7 @@
 
 const SearchButton = document.querySelector('.complain-section input[type="button"]');
 const inputField = document.querySelector('.complain-section input[type="text"]');
+const responseField = document.querySelector('.response p');
 
 
 
@@ -22,14 +23,18 @@ async function SendData(question) {
         throw new Error('Network response was not ok');
     }else{
         const data = await response.json();
+        
     
         console.log(data);
+        return data.response;
     }
     }
-    
+
+
 
 SearchButton.addEventListener('click', async () => {
    const input = await getInput(inputField);
    const res = await SendData(input);
    console.log(res);
+   responseField.textContent = res;
 });
