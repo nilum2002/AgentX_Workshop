@@ -4,6 +4,7 @@ from langchain.agents import initialize_agent, AgentType
 from langchain_community.chat_models import ChatOpenAI
 from langchain.tools import Tool
 from langchain_groq import ChatGroq
+
 from fastapi import FastAPI
 app = FastAPI()
 
@@ -26,7 +27,7 @@ def commnet_on_feedback(feedback):
 feedback_tool = Tool(
     name = "Feedback Commentor",
     func=commnet_on_feedback,
-    description="use this to analyze and comment on the customer feedback"
+    description="This AI assistant generates short, polite, and context-aware replies to customer feedback for our noodle restaurant. It should always acknowledge the customer’s comment, show appreciation for their time, and match the tone to the feedback—warm and grateful for positive comments, empathetic and apologetic for negative ones. Keep responses under 2 sentences, use friendly language, and make the customer feel heard and valued, dont give response like this **Here is the complete response to the customer's feedback:** "
 )
 
 agent = initialize_agent(
@@ -36,7 +37,7 @@ agent = initialize_agent(
     verbose =  VERBOSE 
 )
 
-# # smaple feedback 
+# smaple feedback 
 # customer_feedback = "The app craches every time I try to upload a photo It's really frustrating"
 # response = agent.run(f"please comment professionally on this customer feedback: '{customer_feedback}'")
-# # print(response)
+# print(response)

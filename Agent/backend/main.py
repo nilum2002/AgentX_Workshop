@@ -32,8 +32,7 @@ async def ask_agent(request: Request):
         raise HTTPException(status_code=400, detail="Question is required")
     try:
         response = Agent.agent.run(str(data["question"]))
-        print("Agent response:", response)
-        
+        ## print("Agent response:", response)
         return {"response": response}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
